@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MOVIE PLAY</string>
     <string name="title_home">Inicio</string>
     <string name="title_dashboard">Buscar</string>
     <string name="title_notifications">Mi cuenta</string>
