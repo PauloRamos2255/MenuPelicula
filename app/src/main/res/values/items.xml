@@ -2,8 +2,8 @@
 <resources>
     <style name="MyNavBarStyle" parent="Widget.Design.BottomNavigationView">
         <!-- Color del texto cuando no está seleccionado -->
-        <item name="android:textColor">@color/white</item>
-        <item name="android:tint">@color/white</item>
+        <item name="android:textColor">@color/amarillo</item>
+        <item name="android:tint">@color/amarillo</item>
 
         <!-- Otros atributos de estilo -->
     </style>
