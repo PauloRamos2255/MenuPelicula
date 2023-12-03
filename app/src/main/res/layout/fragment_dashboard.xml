@@ -10,14 +10,16 @@
 
     <EditText
         android:id="@+id/txtbuscar"
-        android:layout_width="match_parent"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
         android:drawableLeft="@drawable/baseline_search_24"
-        android:paddingLeft="10dp"
-        android:textSize="22dp"
-        android:background="@drawable/rounded_background"
         android:hint="Ingrese la consulta de búsqueda"
-        />
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:textSize="17dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
