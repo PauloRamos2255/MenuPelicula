@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MOVIE PLAY</string>
     <string name="title_home">Inicio</string>
-    <string name="title_dashboard">Buscar</string>
+    <string name="title_dashboard">Buscar pelicula</string>
     <string name="title_notifications">Mi cuenta</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
