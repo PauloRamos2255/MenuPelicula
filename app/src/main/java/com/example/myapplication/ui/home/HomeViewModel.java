@@ -11,24 +11,50 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<List<Movie>> movies;
+    private MutableLiveData<List<Movie>> carteleraMovies;
+    private MutableLiveData<List<Movie>> popularMovies;
     private MovieRepository movieRepository;
 
     public HomeViewModel() {
-        movies = new MutableLiveData<>();
+        carteleraMovies = new MutableLiveData<>();
+        popularMovies = new MutableLiveData<>();
         movieRepository = new MovieRepository();
         fetchPopularMovies("8300bb0075ff37f5c25ab05fdeb18503"); // Reemplaza "TU_CLAVE_API" con tu clave de API real
+        fetchCarteleraMovies("8300bb0075ff37f5c25ab05fdeb18503");
     }
 
-    public LiveData<List<Movie>> getMovies() {
-        return movies;
+
+
+    public LiveData<List<Movie>> getCarteleraMovies() {
+        return carteleraMovies;
+    }
+
+    public LiveData<List<Movie>> getPopularMovies() {
+        return popularMovies;
+    }
+
+
+    private void fetchCarteleraMovies(String apiKey) {
+        movieRepository.getCarteleraMovies(apiKey, new MovieRepository.MoviesCallback() {
+            @Override
+            public void onSuccess(List<Movie> moviess) {
+                carteleraMovies.setValue(moviess);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        });
     }
 
     private void fetchPopularMovies(String apiKey) {
+
+
         movieRepository.getPopularMovies(apiKey, new MovieRepository.OnMoviesCallback() {
             @Override
             public void onSuccess(List<Movie> moviesList) {
-                movies.setValue(moviesList);
+                popularMovies.setValue(moviesList);
             }
 
             @Override

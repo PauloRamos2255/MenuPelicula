@@ -10,4 +10,8 @@ public interface MovieAPI {
 
     @GET("movie/popular")
     Call<MovieResponse> getPopularMovies(@Query("api_key") String apiKey);
+
+    @GET("movie/now_playing")
+    Call<MovieResponse> getCarteleraMovies(@Query("api_key") String apiKey);
+
 }

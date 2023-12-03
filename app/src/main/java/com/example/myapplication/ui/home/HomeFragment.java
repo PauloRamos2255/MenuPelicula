@@ -38,7 +38,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private RecyclerView recycler;
     private MovieAdapter movieAdapter;
+    private MovieAdapter popularAdapter;  // Nuevo adaptador para la lista popular
     private HomeViewModel homeViewModel;
 
     @Override
@@ -46,10 +48,16 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewHorizontal);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL, false));
+        recycler = view.findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        recycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 
         movieAdapter = new MovieAdapter(new ArrayList<>());
+        popularAdapter = new MovieAdapter(new ArrayList<>());  // Nuevo adaptador para la lista popular
+
         recyclerView.setAdapter(movieAdapter);
+        recycler.setAdapter(popularAdapter);  // Utiliza el adaptador correcto
 
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -59,9 +67,17 @@ public class HomeFragment extends Fragment {
     }
 
     private void observeViewModel() {
-        homeViewModel.getMovies().observe(getViewLifecycleOwner(), movies -> {
-            if (movies != null) {
-                movieAdapter.updateMovies(movies);
+        // Observa la lista de películas de la cartelera
+        homeViewModel.getCarteleraMovies().observe(getViewLifecycleOwner(), carteleraMovies -> {
+            if (carteleraMovies != null) {
+                movieAdapter.updateMovies(carteleraMovies);
+            }
+        });
+
+        // Observa la lista de películas populares
+        homeViewModel.getPopularMovies().observe(getViewLifecycleOwner(), popularMovies -> {
+            if (popularMovies != null) {
+                popularAdapter.updateMovies(popularMovies);
             }
         });
     }
