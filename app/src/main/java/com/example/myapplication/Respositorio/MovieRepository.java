@@ -5,6 +5,7 @@ import com.example.myapplication.Conexion.MovieAPI;
 import com.example.myapplication.Entidad.Movie;
 import com.example.myapplication.Entidad.MovieResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -96,7 +97,17 @@ public class MovieRepository {
                     MovieResponse movieResponse = response.body();
                     if (movieResponse != null) {
                         List<Movie> movies = movieResponse.getResults();
-                        callback.onSuccess(movies);
+
+                        List<Movie> filteredMovies = new ArrayList<>();
+                        String searchText = query.toLowerCase();
+
+                        for (Movie movie : movies) {
+                            if (movie.getTitle().toLowerCase().contains(searchText)) {
+                                filteredMovies.add(movie);
+                            }
+                        }
+
+                        callback.onSuccess(filteredMovies);
                     }
                 } else {
                     callback.onError("Error al obtener la lista de películas");
