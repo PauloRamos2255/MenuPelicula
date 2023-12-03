@@ -64,7 +64,6 @@ public class MovieRepository {
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 if (response.isSuccessful()) {
                     MovieResponse movieResponse = response.body();
-
                     if (movieResponse != null) {
                         List<Movie> movies = movieResponse.getResults();
                         callback.onSuccess(movies);
@@ -82,6 +81,36 @@ public class MovieRepository {
     }
 
     public interface MoviesCallback {
+        void onSuccess(List<Movie> moviess);
+
+        void onError(String errorMessage);
+    }
+
+
+    public void getSearchMovies(String apiKey, String query,final SearchCallback callback){
+        Call<MovieResponse> call = movieApi.getSearchMovies(apiKey , query);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if (response.isSuccessful()) {
+                    MovieResponse movieResponse = response.body();
+                    if (movieResponse != null) {
+                        List<Movie> movies = movieResponse.getResults();
+                        callback.onSuccess(movies);
+                    }
+                } else {
+                    callback.onError("Error al obtener la lista de películas");
+                }
+            }
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                t.printStackTrace();
+                callback.onError("Error de red al obtener la lista de películas");
+            }
+        });
+    }
+
+    public interface SearchCallback {
         void onSuccess(List<Movie> moviess);
 
         void onError(String errorMessage);

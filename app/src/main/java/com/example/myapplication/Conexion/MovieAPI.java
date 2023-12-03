@@ -14,4 +14,7 @@ public interface MovieAPI {
     @GET("movie/now_playing")
     Call<MovieResponse> getCarteleraMovies(@Query("api_key") String apiKey);
 
+    @GET("search/movie")
+    Call<MovieResponse> getSearchMovies(@Query("api_key") String apiKey , @Query("query") String query );
+
 }
