@@ -1,19 +1,24 @@
 package com.example.myapplication.Entidad;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
+
 public class Movie {
     private String title;
     private String overview;
-    private String releaseDate;
-    private String posterPath;
+    private Date releaseDate;
+    @SerializedName("poster_path")
+    private String posterFullPath;
 
     public Movie() {
     }
 
-    public Movie(String title, String overview, String releaseDate, String posterPath) {
+    public Movie(String title, String overview, Date releaseDate, String posterFullPath) {
         this.title = title;
         this.overview = overview;
         this.releaseDate = releaseDate;
-        this.posterPath = posterPath;
+        this.posterFullPath = posterFullPath;
     }
 
     public String getTitle() {
@@ -32,19 +37,19 @@ public class Movie {
         this.overview = overview;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    public String getPosterPath() {
-        return posterPath;
+    public String getPosterFullPath() {
+        return posterFullPath;
     }
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+    public void setPosterFullPath(String posterFullPath) {
+        this.posterFullPath = posterFullPath;
     }
 }

@@ -42,9 +42,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.MovieViewHolder holder, int position) {
         Movie movie = movies.get(position);
-        holder.titleTextView.setText(movie.getTitle());
+        holder.titleTextView.setText(movie.getPosterFullPath());
         Glide.with(holder.itemView.getContext())
-                .load(movie.getPosterPath())
+                .load("https://image.tmdb.org/t/p/w200"+movie.getPosterFullPath())
                 .placeholder(R.drawable.defaultplaceholder)
                 .error(R.drawable.image)
                 .into(holder.imageView);
