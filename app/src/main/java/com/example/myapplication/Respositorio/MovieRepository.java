@@ -15,6 +15,7 @@ import retrofit2.Retrofit;
 
 public class MovieRepository {
     private final MovieAPI movieApi;
+    String language = "es-ES";
 
     public MovieRepository() {
         // Utiliza tu método getClient() de ApiConexion para obtener el cliente Retrofit
@@ -26,7 +27,7 @@ public class MovieRepository {
 
     public void getPopularMovies(String apiKey, final OnMoviesCallback callback) {
         // Realiza la solicitud a la API (asumiendo que apiKey es tu clave de API)
-        Call<MovieResponse> call = movieApi.getPopularMovies(apiKey);
+        Call<MovieResponse> call = movieApi.getPopularMovies(apiKey,language);
 
         call.enqueue(new Callback<MovieResponse>() {
             @Override
@@ -59,7 +60,8 @@ public class MovieRepository {
 
 
     public void getCarteleraMovies(String apiKey, final MoviesCallback callback){
-        Call<MovieResponse> call = movieApi.getCarteleraMovies(apiKey);
+
+        Call<MovieResponse> call = movieApi.getCarteleraMovies(apiKey ,language );
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
@@ -89,7 +91,7 @@ public class MovieRepository {
 
 
     public void getSearchMovies(String apiKey, String query,final SearchCallback callback){
-        Call<MovieResponse> call = movieApi.getSearchMovies(apiKey , query);
+        Call<MovieResponse> call = movieApi.getSearchMovies(apiKey ,language, query);
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
