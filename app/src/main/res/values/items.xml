@@ -5,6 +5,7 @@
         <item name="android:textColor">@color/amarillo</item>
         <item name="android:tint">@color/amarillo</item>
 
+
         <!-- Otros atributos de estilo -->
     </style>
 </resources>

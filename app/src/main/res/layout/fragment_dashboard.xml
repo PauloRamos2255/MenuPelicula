@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/azul"
+    android:background="@color/morado1"
     android:orientation="vertical"
     tools:context=".ui.dashboard.DashboardFragment">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
+        android:background="@drawable/borde"
         android:drawableLeft="@drawable/baseline_search_24"
         android:hint="Ingrese la consulta de búsqueda"
         android:padding="5dp"
