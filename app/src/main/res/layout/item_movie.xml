@@ -2,10 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/itempeli"
-    android:layout_width="130dp"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-   android:padding="10dp">
+   android:padding="15dp">
 
     <ImageView
         android:id="@+id/moviePoster"
@@ -16,15 +16,15 @@
 
     <TextView
         android:id="@+id/movieTitle"
-        android:layout_width="120dp"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:gravity="center"
         android:text="Movie Title"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
-
+        android:textSize="18sp"
+        android:textStyle="normal" />
 
 
 </LinearLayout>
