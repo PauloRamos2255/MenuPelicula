@@ -80,5 +80,7 @@ public class HomeFragment extends Fragment {
                 popularAdapter.updateMovies(popularMovies);
             }
         });
+
+
     }
 }

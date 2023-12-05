@@ -18,11 +18,12 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel() {
         carteleraMovies = new MutableLiveData<>();
         popularMovies = new MutableLiveData<>();
+        tendenciaMovies = new MutableLiveData<>();
         movieRepository = new MovieRepository();
         fetchPopularMovies("8300bb0075ff37f5c25ab05fdeb18503"); // Reemplaza "TU_CLAVE_API" con tu clave de API real
         fetchCarteleraMovies("8300bb0075ff37f5c25ab05fdeb18503");
-    }
 
+    }
 
 
     public LiveData<List<Movie>> getCarteleraMovies() {
@@ -32,6 +33,8 @@ public class HomeViewModel extends ViewModel {
     public LiveData<List<Movie>> getPopularMovies() {
         return popularMovies;
     }
+
+
 
 
     private void fetchCarteleraMovies(String apiKey) {
@@ -63,4 +66,6 @@ public class HomeViewModel extends ViewModel {
             }
         });
     }
+
+
 }
